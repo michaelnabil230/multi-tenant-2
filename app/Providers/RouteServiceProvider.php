@@ -33,8 +33,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+            $this->mapWebRoutes();
         });
     }
 
@@ -48,5 +47,22 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        foreach (config('tenancy.central_domains') as $domain) {
+            Route::middleware(['web'])
+                ->domain($domain)
+                ->group(base_path('routes/web.php'));
+        }
     }
 }
