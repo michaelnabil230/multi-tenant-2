@@ -44,7 +44,7 @@ class Tenancy
     {
         event(new Events\EndingTenancy($this));
 
-        if (!$this->initialized) {
+        if (! $this->initialized) {
             return;
         }
 

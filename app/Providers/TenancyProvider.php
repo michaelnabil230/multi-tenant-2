@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use App\Tenancy;
-use App\Models\Tenant;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Queue\Events\JobProcessing;
 use App\Http\Middleware\InitializeTenancy;
 use App\Http\Middleware\PreventAccessFromCentralDomains;
+use App\Models\Tenant;
+use App\Tenancy;
+use Illuminate\Queue\Events\JobProcessing;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class TenancyProvider extends ServiceProvider
 {
@@ -61,7 +61,7 @@ class TenancyProvider extends ServiceProvider
         Route::middleware([
             'web',
             PreventAccessFromCentralDomains::class,
-            InitializeTenancy::class
+            InitializeTenancy::class,
         ])->group(base_path('routes/tenant.php'));
         // Route::middleware('api')->prefix('api')->group(base_path('routes/tenant-api.php'));
     }

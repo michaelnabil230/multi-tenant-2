@@ -3,11 +3,11 @@
 
 namespace App\Models;
 
-use App\Traits\Uuids;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use App\Exceptions\TenantCouldNotBeIdentified;
+use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Tenant extends Model
 {
@@ -50,7 +50,7 @@ class Tenant extends Model
             ->with('domains')
             ->first();
 
-        if (!$tenant) {
+        if (! $tenant) {
             throw new TenantCouldNotBeIdentified($column, $value);
         }
 

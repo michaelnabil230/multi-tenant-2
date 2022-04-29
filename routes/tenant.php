@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\InitializeTenancyByDomain;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware([InitializeTenancyByDomain::class])->group(function () {
     Auth::routes();

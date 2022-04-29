@@ -2,9 +2,9 @@
 
 namespace App\Scopes;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class TenantScopeByAuthentication extends TenantScope
 {
@@ -12,7 +12,7 @@ class TenantScopeByAuthentication extends TenantScope
     {
         $user = $this->getUser();
 
-        if (!$user) {
+        if (! $user) {
             return;
         }
 

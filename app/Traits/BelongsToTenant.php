@@ -3,9 +3,8 @@
 namespace App\Traits;
 
 use App\Models\Tenant;
-use App\Traits\TenantIdColumn;
-use App\Scopes\TenantScopeByInitialized;
 use App\Scopes\TenantScopeByAuthentication;
+use App\Scopes\TenantScopeByInitialized;
 
 trait BelongsToTenant
 {
@@ -23,7 +22,7 @@ trait BelongsToTenant
         static::addGlobalScope(new $scope);
 
         static::creating(function ($model) {
-            if (!$model->getAttribute($this->getTenantId()) && !$model->relationLoaded('tenant')) {
+            if (! $model->getAttribute($this->getTenantId()) && ! $model->relationLoaded('tenant')) {
                 if (tenancy()->initialized != null) {
                     $model->setAttribute($this->getTenantId(), tenant()->getTenantKey());
                     $model->setRelation('tenant', tenant());

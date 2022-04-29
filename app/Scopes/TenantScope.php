@@ -2,10 +2,10 @@
 
 namespace App\Scopes;
 
+use App\Traits\TenantIdColumn;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Database\Eloquent\Builder;
-use App\Traits\TenantIdColumn;
 
 abstract class TenantScope implements Scope
 {

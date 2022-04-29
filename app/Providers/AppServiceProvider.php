@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Traits\TenantIdColumn;
 use App\Events\TenancyInitialized;
+use App\Traits\TenantIdColumn;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Schema\Blueprint;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -9,7 +9,7 @@ class TenantScopeByInitialized extends TenantScope
 {
     public function apply(Builder $builder, Model $model)
     {
-        if (!tenancy()->initialized) {
+        if (! tenancy()->initialized) {
             return;
         }
 
